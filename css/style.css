@@ -1,0 +1,238 @@
+/* =========================================================
+   EXERCISE 1 — Design Tokens (CSS Custom Properties)
+   PROFE7 · Digital Web Authoring · Module 3
+   ========================================================= */
+
+:root {
+  --clr-meadow: #0C6038;
+  --clr-mustard: #B2BD47;
+  --clr-peach: #F1D2A1;
+  --clr-outer-space: #2B4C59;
+  --clr-crimson: #6C270A;
+  --clr-text: #2B4C59;
+  --clr-muted: #516A60;
+  --clr-bg: #F1D2A1;
+  --clr-surface: #FFF3DC;
+
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-heading: "Playfair Display", Georgia, serif;
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 3rem;
+}
+
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--clr-text);
+  background: var(--clr-bg);
+  line-height: 1.5;
+  padding: var(--space-lg);
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+main {
+  display: grid;
+  gap: var(--space-md);
+}
+
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  color: var(--clr-meadow);
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: var(--space-md);
+}
+
+h2 {
+  font-size: 1.75rem;
+  margin: var(--space-lg) 0 var(--space-sm);
+}
+
+a {
+  color: var(--clr-crimson);
+}
+
+p {
+  color: var(--clr-text);
+  margin-bottom: var(--space-sm);
+}
+
+.muted {
+  color: var(--clr-muted);
+}
+
+/* =========================================================
+   EXERCISE 2 — Box Model demo
+   Global reset sets box-sizing: border-box, so with width:200px
+   the padding + border are INCLUDED in that 200px, not added
+   on top. Total rendered width = 200px.
+   ========================================================= */
+.card {
+  width: min(100%, 200px);
+  padding: 24px;
+  border: 4px solid var(--clr-mustard);
+  margin: 16px;
+  background: var(--clr-surface);
+}
+
+/* Step 8: temporarily uncomment to compare box-sizing modes.
+   With this active, padding + border are ADDED on top of the
+   200px width, so total rendered width = 200 + 48 + 8 = 256px. */
+/*
+.card {
+  box-sizing: content-box;
+}
+*/
+
+/* =========================================================
+   EXERCISE 3 — Responsive nav bar with Flexbox
+   ========================================================= */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--clr-meadow);
+  color: white;
+  max-width: none;
+  margin: 0 -3rem var(--space-lg);
+}
+
+.site-header h1 {
+  color: white;
+  font-size: 1.75rem;
+  margin: 0;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  color: var(--clr-mustard);
+}
+
+picture,
+picture img {
+  display: block;
+  width: 100%;
+}
+
+fieldset {
+  border: 1px solid var(--clr-muted);
+  padding: var(--space-md);
+}
+
+legend {
+  font-weight: 600;
+  padding: 0 var(--space-xs);
+}
+
+label,
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: var(--space-xs);
+}
+
+input,
+textarea {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-outer-space);
+  border-radius: 0.25rem;
+  padding: 0.65rem;
+  width: 100%;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  background: var(--clr-crimson);
+  border: 0;
+  border-radius: 0.25rem;
+  color: white;
+  cursor: pointer;
+  padding: 0.65rem 1rem;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: var(--space-md);
+  }
+
+  .site-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin: 0 calc(var(--space-md) * -1) var(--space-lg);
+    padding: var(--space-sm);
+  }
+
+  .nav-links {
+    gap: var(--space-sm);
+  }
+
+  .card {
+    margin: 0;
+    width: 100%;
+  }
+}
+
+.grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: var(--space-md);
+margin-top: var(--space-md);
+}
+.grid .card {
+width: 100%;
+margin: 0;
+padding: var(--space-md);
+border-radius: 12px;
+background: var(--clr-surface);
+box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+.card h3 { color: var(--clr-meadow); margin-bottom: var(--space-xs); }
+
+.grid .card:nth-child(3n + 2) {
+  border-color: var(--clr-meadow);
+}
+
+.grid .card:nth-child(3n) {
+  border-color: var(--clr-crimson);
+}
