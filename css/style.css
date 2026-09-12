@@ -104,16 +104,19 @@ p {
 */
 
 /* =========================================================
-   EXERCISE 3 — Responsive nav bar with Flexbox
+   MODULE 4 · EXERCISE 2 — Mobile-first responsive header
+   Default styles below are the MOBILE styles.
+   The min-width: 768px query near the bottom enhances
+   the layout for tablet/desktop screens.
    ========================================================= */
 .site-header {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: var(--space-sm) var(--space-md);
+  gap: var(--space-sm);
+  padding: var(--space-sm);
   background: var(--clr-meadow);
   color: white;
-  max-width: none;
   margin: 0 -3rem var(--space-lg);
 }
 
@@ -123,11 +126,29 @@ p {
   margin: 0;
 }
 
+.menu {
+  width: 100%;
+}
+
+.menu summary {
+  color: white;
+  cursor: pointer;
+  font-size: 1.75rem;
+  line-height: 1;
+  list-style: none;
+  text-align: center;
+}
+
+.menu summary::-webkit-details-marker {
+  display: none;
+}
+
 .nav-links {
   list-style: none;
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-md);
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
 }
 
 .nav-links a {
@@ -190,26 +211,40 @@ button {
   padding: 0.65rem 1rem;
 }
 
+/* Small-screen tweaks that are NOT part of the header
+   (body padding, .card sizing) — kept from before */
 @media (max-width: 600px) {
   body {
     padding: var(--space-md);
   }
 
-  .site-header {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: var(--space-sm);
-    margin: 0 calc(var(--space-md) * -1) var(--space-lg);
-    padding: var(--space-sm);
-  }
-
-  .nav-links {
-    gap: var(--space-sm);
-  }
-
   .card {
     margin: 0;
     width: 100%;
+  }
+}
+
+/* =========================================================
+   MODULE 4 · EXERCISE 2 — Enhance header for tablet/desktop
+   ========================================================= */
+@media (min-width: 768px) {
+  .site-header {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .menu {
+    width: auto;
+  }
+
+  .menu summary {
+    display: none;
+  }
+
+  .nav-links {
+    flex-direction: row;
+    gap: var(--space-md);
   }
 }
 
